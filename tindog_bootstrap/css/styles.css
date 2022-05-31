@@ -2,13 +2,12 @@ body{
   font-family: "Montserrat";
 }
 #title{
-  background-color: ff4c68;
-  /* color: #fff; */
-  /* not able to render the bg-color, uncomment the color when that works*/
+  background-color: #ff4c68;
+  color: #fff;
 }
 
 .container-fluid{
-  padding: 3% 15%;
+  padding: 3% 15% 7%;
 }
 h1{
   font-family: 'Montserrat', sans-serif;
@@ -31,6 +30,7 @@ h3{
 
 .navbar{
   padding: 0 0 4.5rem;
+  background-color: #ff4c68!important;
 }
 .navbar-brand{
   font-family: "Ubuntu";
@@ -42,8 +42,8 @@ h3{
 }
 .nav-link{
   font-size: 1.2rem;
-  font-family: "Montserrat-Light";
-  /* this font family Lightis also not able to render */
+  font-family: "Montserrat";
+  font-weight: lighter;
 }
 
 /* Download button */
@@ -52,15 +52,25 @@ h3{
 }
 
 /* Title image */
+.image-container{
+  position: relative;
+  /* Used coz as soon as i made the title img position absolute it take width 60% of the screen to avoid that i introduced this so that title image gets
+   relative to features as well as this and takes as previous the width 60% of this Container  */
+}
 
 .title-image{
   width: 60%;
   transform: rotate(25deg);
+  position: absolute;
+  right: 30%;
 }
 
 /* Features */
 #features{
   padding: 7% 12%;
+  background-color: #fff;
+  position: relative;
+  /* for making the features come over the image of i-phone */
 }
 
 .features-all{
@@ -79,8 +89,7 @@ p{
   color: #8f8f8f;
 }
 .icon:hover{
-  color: ff4c68;
-  /* not able to render this hover color */
+  color: #ff4c68;
 }
 
  /* Testimonials */
@@ -122,4 +131,37 @@ p{
 }
 .pricing-column{
   padding: 3% 2%;
+}
+
+@media (max-width: 1028px) {
+  #title{
+    text-align: center;
+  }
+  .title-image{
+    position: static;
+    transform: rotate(0);
+  }
+}
+
+#cta{
+  text-align: center;
+  background-color: #ff4c68;
+  padding: 7% 15% 7%;
+  color: #fff;
+}
+.cta-conc{
+  font-family: "Montserrat";
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+/* footer */
+#footer{
+  text-align: center;
+  background-color: #fff;
+  padding: 5% 15% 5%;
+}
+
+.footer-icon{
+  padding: 12px;
 }
