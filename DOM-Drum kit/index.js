@@ -23,6 +23,8 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
@@ -32,8 +34,10 @@ document.addEventListener("keydown",function(event){
 
   makeSound(event.key);
 
+  buttonAnimation(event.key);
 });
 
+//function makeSound defined for generating respective sound when a button gets clicked or key is pressed
 function makeSound(key){
   switch (key) {
     case "w":
@@ -67,4 +71,16 @@ function makeSound(key){
     default:
       consolg.log(buttonInnerHTML);
   }
+}
+
+//function buttonAnimation defined for adding animation to the button when it gets clicked or pressed
+function buttonAnimation(currentKey){
+
+  var activeButton = document.querySelector("." + currentKey);    //selecting a class based on the key clicked or pressed
+
+  activeButton.classList.add("pressed");                          //add class pressed which has styles applied to it
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  }, 100);                                                    //This timeout method remove the pressed class acc to the function described after 0.1s
 }
