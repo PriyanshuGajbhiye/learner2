@@ -10,6 +10,7 @@ var started = false;
 //2. Create a new variable called level and start at level 0.
 var level = 0;
 
+//1. Use jQuery to detect when a keyboard key has been pressed, when that happens for the first time, call nextSequence().
 $(document).keypress(function() {
   if (!started) {
 
@@ -27,16 +28,51 @@ $(".btn").click(function(){
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
+
+  checkAnswer(userClickedPattern.length-1);
 });
 
+function checkAnswer(currentLevel){
+
+    if(gamePattern[currentLevel] === userClickedPattern[currentLevel]){
+
+        console.log("success");
+
+        if(userClickedPattern.length === gamePattern.length){
+            setTimeout(function(){
+              nextSequence();
+            },1000);
+        }
+
+    }
+    else {
+            console.log("wrong");
+
+            playSound("wrong");
+
+            $("body").addClass("game-over");
+            setTimeout(function(){
+                $("body").removeClass("game-over");
+            }, 200);
+
+            $("#level-title").text("Game Over, Press Any Key to Restart");
+
+            startOver();
+    }
+
+}
+
+
 function nextSequence() {
+
+  userClickedPattern = [];
 
   //4. Inside nextSequence(), increase the level by 1 every time nextSequence() is called.
   level++;
 
   //5. Inside nextSequence(), update the h1 with this change in the value of level.
   $("#level-title").text("Level " + level);
-  
+
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
@@ -60,4 +96,11 @@ function animatePress(currentColour){
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 
+}
+
+function startOver(){
+
+    level = 0;
+    gamePattern = [];
+    started = false;
 }
