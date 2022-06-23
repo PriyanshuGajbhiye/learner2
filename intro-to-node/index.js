@@ -1,9 +1,20 @@
 //jshint esversion: 6
 //The above line turns off the warning that shows const is only available in ES6
 
-const fs = require('node:fs');
+const superheroes = require('superheroes');
 
-fs.copyFileSync("file1.txt","file2.txt");
+var mySuperHeroName = superheroes.random();
 
-/*The above command will copy the content of source file to destination file if destination file does not exist it will create it and then
-copy the content and if already exists it's content will be replaced by the source file content*/
+console.log(mySuperHeroName);
+
+const supervillains = require('supervillains');
+
+var mySuperVillainName = supervillains.random();
+
+console.log(mySuperVillainName);
+
+console.log(mySuperHeroName + " vs " + mySuperVillainName);
+
+var allSuperVillains = supervillains.all;
+
+console.log(allSuperVillains);
