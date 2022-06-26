@@ -23,6 +23,20 @@ app.post("/", function(req,res){
   res.send("The result of the calculation is " + result);
 });
 
+app.get("/bmicalculator",function(req,res){
+  res.sendFile(__dirname + "/bmiCalculator.html");
+});
+
+app.post("/bmicalculator", function(req,res){
+
+  var wt = parseFloat(req.body.weight);       //Not just any number we want decimal Number
+  var ht = parseFloat(req.body.height);
+  var bmi = wt / (ht * ht);
+
+  res.send("Your BMI is " + bmi);
+
+});
+
 app.listen(3000, function(){
   console.log("Server is running on port 3000");
 });
